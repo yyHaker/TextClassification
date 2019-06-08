@@ -1,0 +1,52 @@
+{
+    "name": "TC",
+    "n_gpu": 1,
+    "data_loader": {
+        "type": "TREC",
+        "args":{
+            "data_path": "data/TREC/",
+            "train_file": "train.json",
+            "valid_file": "valid.json",
+            "test_file": "test.json",
+            "train_batch_size": 64,
+            "valid_batch_size": 64,
+            "test_batch_size": 1,
+            "context_threshold": 500,
+            "pretrain_emd_file": "GoogleNews-word2vec.300d.txt",
+            "device": "cuda"
+        }
+    },
+     "arch": {
+        "type": "TextCNN",
+        "args": {
+            "word_dim": 300,
+            "mode": "static",
+            "filters": [3, 4, 5],
+            "filters_num": [100, 100, 100],
+            "dropout":0.5,
+            "n_classes": 6
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args":{
+            "lr": 0.01,
+            "weight_decay": 1e-4
+        }
+    },
+    "loss": {
+        "type":"cross_entropy"
+    },
+    "metrics": "ACC",
+    "trainer": {
+        "train_info": "text_cnn",
+        "epochs": 50,
+        "save_dir": "./result/saved",
+        "log_step": 40,
+        "monitor": "ACC",
+        "monitor_mode": "max"
+    },
+        "visualization": {
+        "log_dir": "logs"
+    }
+}
