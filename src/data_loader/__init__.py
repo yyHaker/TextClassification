@@ -9,5 +9,7 @@
 """
 from .newsgroup_data import NewsGroup
 from .trec_data import TREC
+from .mr_data import MR
+
 
 

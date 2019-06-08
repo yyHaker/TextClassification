@@ -1,5 +1,5 @@
 # Text classification
-This repository contains some method to do text classification.
+This repository contains some classical models to do text classification.
 
 
 
