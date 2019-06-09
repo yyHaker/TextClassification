@@ -2,9 +2,9 @@
     "name": "TC",
     "n_gpu": 1,
     "data_loader": {
-        "type": "TREC",
+        "type": "MR",
         "args":{
-            "data_path": "data/TREC/",
+            "data_path": "data/MR/",
             "train_file": "train.json",
             "valid_file": "valid.json",
             "test_file": "test.json",
@@ -24,13 +24,13 @@
             "filters": [3, 4, 5],
             "filters_num": [100, 100, 100],
             "dropout":0.5,
-            "n_classes": 6
+            "n_classes": 2
         }
     },
     "optimizer": {
         "type": "Adam",
         "args":{
-            "lr": 0.001,
+            "lr": 0.0001,
             "weight_decay": 1e-4
         }
     },

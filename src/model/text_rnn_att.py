@@ -9,13 +9,13 @@
 """
 import torch
 import torch.nn as nn
-from myutils import *
+from myutils import GRU, SelfAttention, Linear, seq_mask
 
 
-class BaseModel(nn.Module):
-    """baseline model"""
+class RNNAttention(nn.Module):
+    """Text RNN Attention model."""
     def __init__(self, config, pretrained_emb):
-        super(BaseModel, self).__init__()
+        super(RNNAttention, self).__init__()
 
         self.config = config["arch"]["args"]
 
@@ -23,7 +23,7 @@ class BaseModel(nn.Module):
         self.word_emb = nn.Embedding.from_pretrained(pretrained_emb, freeze=True)
 
         # lstm layer
-        self.rnn = LSTM(
+        self.rnn = GRU(
             input_size=self.config["word_dim"],
             hidden_size=self.config["hidden_size"],
             batch_first=True,
@@ -35,17 +35,13 @@ class BaseModel(nn.Module):
                                                   hidden_dim=self.config["hidden_size"]*2)
 
         # projection layer
-        self.projection_layer = nn.Sequential(
-            Linear(self.config["hidden_size"] * 2, self.config["hidden_size"]),
-            nn.Tanh(),
-            Linear(self.config["hidden_size"], self.config["n_classes"])
-        )
+        self.projection_layer = Linear(self.config["hidden_size"]*2, self.config["n_classes"])
 
     def forward(self, data):
         text, length = data  # (b, seq_len), (b)
         text_mask = seq_mask(length, max_len=text.size()[1], device=text.device, inf=True)
         text_emb = self.word_emb(text)  # (b, seq_len, d)
-        text_emb = self.rnn((text_emb, length))[0]  # (b, seq_len, hidden*2)
+        text_emb, _ = self.rnn((text_emb, length))  # (b, seq_len, hidden*2)
 
         text_emb, weight = self.self_attention_layer(text_emb, mask=text_mask)  # (b, hidden*2)
 

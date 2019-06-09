@@ -98,13 +98,13 @@ class MR(object):
         """load train and valid、test data."""
         texts = []
         labels = []
-        with open(self.data_path + "/MR/rt-polarity.pos", 'r', encoding="utf-8") as f:
+        with open(self.data_path + "rt-polarity.pos", 'r', encoding="utf-8") as f:
             for line in f:
                 if line[-1] == "\n":
                     line = line[: -1]
                 labels.append(1)
                 texts.append(line.split())
-        with open(self.data_path + "/MR/rt-polarity.neg", 'r', encoding="utf-8") as f:
+        with open(self.data_path + "rt-polarity.neg", 'r', encoding="utf-8") as f:
             for line in f:
                 if line[-1] == "\n":
                     line = line[: -1]

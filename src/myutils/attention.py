@@ -10,6 +10,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from myutils.nn import Linear
 
 
 class SelfAttention(nn.Module):
@@ -17,11 +18,12 @@ class SelfAttention(nn.Module):
     def __init__(self, input_dim, hidden_dim=64):
         super(SelfAttention, self).__init__()
         self.input_dim = input_dim
-        self.projection = nn.Sequential(
-            nn.Linear(input_dim, hidden_dim),
-            nn.Tanh(),
-            nn.Linear(hidden_dim, 1)
-        )
+        # self.projection = nn.Sequential(
+        #     nn.Linear(input_dim, hidden_dim),
+        #     nn.Tanh(),
+        #     nn.Linear(hidden_dim, 1)
+        # )
+        self.projection = Linear(input_dim, 1)
 
     def forward(self, encoder_outputs, mask=None):
         """

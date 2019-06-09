@@ -1,23 +1,32 @@
 # Text classification
 This repository contains some classical models to do text classification.
 
-
+## Develop Requirements
+- OS: Ubuntu 16.04 LTS (64bit)
+- GPU: Nvidia Titan Xp
+- Language: Python 3.6.2.
+- Pytorch: **0.4.1**
+- nltk==3.2.4
+- tensorboardX==0.8
+- torchtext==0.3.1
 
 ## dataset
-[1] TREC
+[1] **TREC**:  TREC question dataset—task involves classifying a question into 6 question
+types (whether the question is about person,
+location, numeric information, etc.)
 
-[2] 20newsgroup
+[2] **20newsgroup**: 
 
-[3] MR
+[3] **MR**: Movie reviews with one sentence per review. Classification involves detecting positive/negative reviews.
 
 ## models
-[1] TextCNN
+[1] [TextCNN](https://www.aclweb.org/anthology/D14-1181)
 ![avatar](pictures/text_cnn.png)
 
-[2] TextRNN
+[2] [TextRNN](https://www.ijcai.org/Proceedings/16/Papers/408.pdf)
 ![avatar](pictures/text_rnn.png)
 
-[3] RCNN
+[3] [RCNN](https://pdfs.semanticscholar.org/eba3/6ac75bf22edf9a1bfd33244d459c75b98305.pdf)
 ![avatar](pictures/rcnn.png)
 
 
@@ -30,10 +39,17 @@ This repository contains some classical models to do text classification.
 |              | paper | 76.1 | 91.2 |
 | TextCNN(Static)       | Results  | 79.7 | **93.4** |
 |              | paper | 81.0 | 92.8 |
-| TextCNN(Non-static)   | Results  | 80.1 | **0.902** |
+| TextCNN(Non-static)   | Results  | 80.1 | 90.8 |
 |              | paper | 81.5 | 93.6 |
 | TextCNN(Multichannel) | Results  | 79.8 | **92.8** |
 |              | paper | 81.1 | 92.2 |
+| TextRNN| Results  | 80.9 | **94.4** |
+|              | paper |  |  |
+| TextRNN+Attention| Results  | 80.2 | **94.6** |
+|              | paper |  |  |
+| TextRCNN| Results  |  | **** |
+|              | paper |  |  |
+
 
 
 ## reference

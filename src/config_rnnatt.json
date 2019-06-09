@@ -2,9 +2,9 @@
     "name": "TC",
     "n_gpu": 1,
     "data_loader": {
-        "type": "MR",
+        "type": "TREC",
         "args":{
-            "data_path": "data/MR/",
+            "data_path": "data/TREC/",
             "train_file": "train.json",
             "valid_file": "valid.json",
             "test_file": "test.json",
@@ -17,18 +17,18 @@
         }
     },
      "arch": {
-        "type": "TextRNN",
+        "type": "RNNAttention",
         "args": {
             "word_dim": 300,
             "hidden_size": 300,
             "dropout":0.5,
-            "n_classes": 2
+            "n_classes": 6
         }
     },
     "optimizer": {
         "type": "Adam",
         "args":{
-            "lr": 0.001,
+            "lr": 0.005,
             "weight_decay": 1e-4
         }
     },

@@ -7,7 +7,8 @@
 @file: __init__.py
 @time: 2019/3/9 15:39
 """
-from .base_model import *
 from .text_cnn import TextCNN
 from .text_rnn import TextRNN
-from .text_rcnn import RCNN
+from .text_rnn_att import RNNAttention
+from .text_rcnn import TextRCNN
+

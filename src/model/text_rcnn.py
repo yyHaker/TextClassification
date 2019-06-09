@@ -11,10 +11,10 @@ import torch
 import torch.nn as nn
 
 
-class RCNN(nn.Module):
+class TextRCNN(nn.Module):
     """Text RCNN model."""
     def __init__(self, config, pretrained_emb):
-        super(RCNN, self).__init__()
+        super(TextRCNN, self).__init__()
 
     def forward(self, *input):
         pass
