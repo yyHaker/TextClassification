@@ -10,16 +10,16 @@ This repository contains some classical models to do text classification.
 - tensorboardX==0.8
 - torchtext==0.3.1
 
-## dataset
+## Dataset
 [1] **TREC**:  TREC question dataset—task involves classifying a question into 6 question
 types (whether the question is about person,
 location, numeric information, etc.)
 
-[2] **20newsgroup**: 
+[2] **20newsgroup**:  This dataset contains messages from twenty newsgroups. 
 
 [3] **MR**: Movie reviews with one sentence per review. Classification involves detecting positive/negative reviews.
 
-## models
+## Models
 [1] [TextCNN](https://www.aclweb.org/anthology/D14-1181)
 ![avatar](pictures/text_cnn.png)
 
@@ -28,6 +28,12 @@ location, numeric information, etc.)
 
 [3] [RCNN](https://pdfs.semanticscholar.org/eba3/6ac75bf22edf9a1bfd33244d459c75b98305.pdf)
 ![avatar](pictures/rcnn.png)
+
+## Excution
+    python train.py -c config_cnn.json
+
+
+
 
 
 ## result
@@ -47,7 +53,7 @@ location, numeric information, etc.)
 |              | paper |  |  |
 | TextRNN+Attention| Results  | 80.2 | **94.6** |
 |              | paper |  |  |
-| TextRCNN| Results  |  | **** |
+| TextRCNN| Results  | 80.05 | **93.2** |
 |              | paper |  |  |
 
 
